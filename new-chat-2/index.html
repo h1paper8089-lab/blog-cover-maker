@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>블로그 표지 이미지 제작 앱</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="control-panel" aria-label="표지 정보 입력">
+        <div class="brand-bar">
+          <div>
+            <p class="eyebrow">Blog Cover Maker</p>
+            <h1>강의 표지 제작</h1>
+          </div>
+          <span class="size-badge">1:1</span>
+        </div>
+
+        <form class="editor-form">
+          <label class="field">
+            <span>업체명</span>
+            <input id="companyInput" type="text" value="CBS 방송국" maxlength="32" />
+          </label>
+
+          <label class="field">
+            <span>강의명</span>
+            <textarea id="titleInput" rows="3" maxlength="72">디지털 전환시대
+생존전략</textarea>
+            <small>줄바꿈을 넣으면 두 번째 줄이 노란 강조 문구로 표시됩니다.</small>
+          </label>
+
+          <label class="field">
+            <span>대상자 / 보조문구</span>
+            <input id="audienceInput" type="text" value="경영협회 정기총회" maxlength="36" />
+          </label>
+
+          <label class="field">
+            <span>강사명</span>
+            <input id="speakerInput" type="text" value="강사 현원종" maxlength="24" />
+          </label>
+
+          <label class="upload-zone" for="photoInput">
+            <input id="photoInput" type="file" accept="image/*" />
+            <span class="upload-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3v12m0-12 4 4m-4-4-4 4" />
+                <path d="M5 15v3a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-3" />
+              </svg>
+            </span>
+            <span class="upload-text">사진 업로드</span>
+            <small id="fileName">강의 현장, 강사, 교육 분위기 사진</small>
+          </label>
+
+          <div class="field">
+            <span>템플릿</span>
+            <div class="segmented" role="radiogroup" aria-label="템플릿 선택">
+              <button type="button" class="template-button is-active" data-template="poster">포스터</button>
+              <button type="button" class="template-button" data-template="split">분할</button>
+              <button type="button" class="template-button" data-template="focus">포커스</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <span>강조 컬러</span>
+            <div class="swatches" role="radiogroup" aria-label="강조 컬러 선택">
+              <button type="button" class="swatch is-active" data-color="#FFF8A8" style="--swatch: #fff8a8" aria-label="옐로우"></button>
+              <button type="button" class="swatch" data-color="#BFF7EA" style="--swatch: #bff7ea" aria-label="민트"></button>
+              <button type="button" class="swatch" data-color="#FFD6E7" style="--swatch: #ffd6e7" aria-label="핑크"></button>
+              <button type="button" class="swatch" data-color="#DDE7FF" style="--swatch: #dde7ff" aria-label="블루"></button>
+              <button type="button" class="swatch" data-color="#E7E0FF" style="--swatch: #e7e0ff" aria-label="라벤더"></button>
+            </div>
+          </div>
+
+          <div class="field">
+            <span>다운로드 형식</span>
+            <div class="segmented download-format" role="radiogroup" aria-label="다운로드 형식 선택">
+              <button type="button" class="format-button is-active" data-format="png">PNG</button>
+              <button type="button" class="format-button" data-format="jpg">JPG</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section class="preview-panel" aria-label="표지 이미지 미리보기">
+        <div class="preview-toolbar">
+          <div>
+            <p class="eyebrow">Preview</p>
+            <h2>1080 x 1080 PNG/JPG</h2>
+          </div>
+          <button id="downloadButton" class="icon-button" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v12m0 0 4-4m-4 4-4-4" />
+              <path d="M5 21h14" />
+            </svg>
+            <span>다운로드</span>
+          </button>
+        </div>
+
+        <div class="canvas-frame">
+          <canvas id="coverCanvas" width="1080" height="1080" aria-label="생성된 블로그 표지 이미지"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
